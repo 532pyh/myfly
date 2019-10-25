@@ -50,13 +50,13 @@ class Features {
 
     static getFeatureList() {
         let features = {
-            mseFlvPlayback: false,
-            mseLiveFlvPlayback: false,
-            networkStreamIO: false,
-            networkLoaderName: '',
-            nativeMP4H264Playback: false,
-            nativeWebmVP8Playback: false,
-            nativeWebmVP9Playback: false
+            mseFlvPlayback: false,//与相同flvjs.isSupported()，表示您的浏览器是否可以进行基本播放。
+            mseLiveFlvPlayback: false,//指示HTTP FLV实时流是否可以在您的浏览器上工作。
+            networkStreamIO: false,//指示网络加载程序是否正在流式传输。
+            networkLoaderName: '',//指示网络加载程序类型名称。
+            nativeMP4H264Playback: false,//指示您的浏览器是否本身支持H.264 MP4视频文件
+            nativeWebmVP8Playback: false,//指示您的浏览器是否本机支持WebM VP8视频文件。
+            nativeWebmVP9Playback: false//指示您的浏览器是否本机支持WebM VP9视频文件。
         };
 
         features.mseFlvPlayback = Features.supportMSEH264Playback();

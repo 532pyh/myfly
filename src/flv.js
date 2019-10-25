@@ -52,7 +52,7 @@ function createPlayer(mediaDataSource, optionalConfig) {
 }
 
 
-// feature detection
+// feature detection如果基本播放可以在您的浏览器上进行，则返回
 function isSupported() {
     return Features.supportMSEH264Playback();
 }

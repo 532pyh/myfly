@@ -24,9 +24,9 @@ import Transmuxer from '../core/transmuxer.js';
 import TransmuxingEvents from '../core/transmuxing-events.js';
 import MSEController from '../core/mse-controller.js';
 import MSEEvents from '../core/mse-events.js';
-import {ErrorTypes, ErrorDetails} from './player-errors.js';
-import {createDefaultConfig} from '../config.js';
-import {InvalidArgumentException, IllegalStateException} from '../utils/exception.js';
+import { ErrorTypes, ErrorDetails } from './player-errors.js';
+import { createDefaultConfig } from '../config.js';
+import { InvalidArgumentException, IllegalStateException } from '../utils/exception.js';
 
 class FlvPlayer {
 
@@ -80,8 +80,8 @@ class FlvPlayer {
         this._statisticsInfo = null;
 
         let chromeNeedIDRFix = (Browser.chrome &&
-                               (Browser.version.major < 50 ||
-                               (Browser.version.major === 50 && Browser.version.build < 2661)));
+            (Browser.version.major < 50 ||
+                (Browser.version.major === 50 && Browser.version.build < 2661)));
         this._alwaysSeekKeyframe = (chromeNeedIDRFix || Browser.msedge || Browser.msie) ? true : false;
 
         if (this._alwaysSeekKeyframe) {
@@ -149,9 +149,9 @@ class FlvPlayer {
         });
         this._msectl.on(MSEEvents.ERROR, (info) => {
             this._emitter.emit(PlayerEvents.ERROR,
-                               ErrorTypes.MEDIA_ERROR,
-                               ErrorDetails.MEDIA_MSE_ERROR,
-                               info
+                ErrorTypes.MEDIA_ERROR,
+                ErrorDetails.MEDIA_MSE_ERROR,
+                info
             );
         });
 
@@ -236,7 +236,7 @@ class FlvPlayer {
             this._emitter.emit(PlayerEvents.ERROR, ErrorTypes.NETWORK_ERROR, detail, info);
         });
         this._transmuxer.on(TransmuxingEvents.DEMUX_ERROR, (detail, info) => {
-            this._emitter.emit(PlayerEvents.ERROR, ErrorTypes.MEDIA_ERROR, detail, {code: -1, msg: info});
+            this._emitter.emit(PlayerEvents.ERROR, ErrorTypes.MEDIA_ERROR, detail, { code: -1, msg: info });
         });
         this._transmuxer.on(TransmuxingEvents.MEDIA_INFO, (mediaInfo) => {
             this._mediaInfo = mediaInfo;
@@ -470,7 +470,7 @@ class FlvPlayer {
         if (directSeekBegin) {  // seek to video begin, set currentTime directly if beginPTS buffered
             this._requestSetTime = true;
             this._mediaElement.currentTime = directSeekBeginTime;
-        }  else if (directSeek) {  // buffered position
+        } else if (directSeek) {  // buffered position
             if (!this._alwaysSeekKeyframe) {
                 this._requestSetTime = true;
                 this._mediaElement.currentTime = seconds;
